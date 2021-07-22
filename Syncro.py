@@ -41,3 +41,16 @@ class Level_0(SyncroGame):
     def square(self):
         self.state = [0, 2]
         super().square()
+
+
+class Level_1(SyncroGame):
+    def __init__(self):
+        super().__init__(level=1, max_iter=1, state=[1, 1])
+
+    def square(self):
+        self.state = [0, 2]
+        super().square()
+
+    def circle(self):
+        self.state = [1, 1]
+        super().circle()
