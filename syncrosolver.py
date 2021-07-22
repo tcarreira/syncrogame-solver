@@ -3,12 +3,10 @@ import Syncro
 
 
 def main():
-    game = Syncro.Level_0()
-    game.solve()
-    game = Syncro.Level_1()
-    game.solve()
-    game = Syncro.Level_2()
-    game.solve()
+    Syncro.Level_0().solve()
+    Syncro.Level_1().solve()
+    Syncro.Level_2().solve()
+    Syncro.Level_3().solve()
 
 
 if __name__ == '__main__':
