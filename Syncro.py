@@ -15,6 +15,12 @@ class SyncroGame:
     def check(self):
         return max(self.state) == len(self.state)
 
+    def solve(self):
+        self.square()
+        if self.check():
+            print(f"Level {self.level}: {self.history}")
+            return self
+
     def square(self):
         if len(self.history) < self.max_iter:
             self.history.append("□")
