@@ -15,6 +15,16 @@ class SyncroGame:
     def check(self):
         return max(self.state) == len(self.state)
 
+    def __call__(self, move: str):
+        if move == "square":
+            return self.square()
+        elif move == "circle":
+            return self.circle()
+        elif move == "triangle":
+            return self.triangle()
+        else:
+            raise RuntimeError(f"This move ({move})) is not supported")
+
     def solve(self):
         solution = self._solve()
         if solution:
@@ -28,16 +38,11 @@ class SyncroGame:
         if len(self.history) >= self.max_iter:
             return None
 
-        # square
-        next_state = self.clone()
-        result = next_state.square()._solve()
-        if result:
-            return result
-        # circle
-        next_state = self.clone()
-        result = next_state.circle()._solve()
-        if result:
-            return result
+        for move in ["square", "circle", "triangle"]:
+            next_state = self.clone()
+            result = next_state(move)._solve()
+            if result:
+                return result
 
     def square(self):
         if len(self.history) < self.max_iter:
