@@ -75,3 +75,20 @@ class Level_1(SyncroGame):
     def circle(self):
         self.state = [1, 1]
         return super().circle()
+
+
+class Level_2(SyncroGame):
+    def __init__(self, *args, **kwargs):
+        super().__init__(level=2, max_iter=2, state=[1, 1, 1], *args, **kwargs)
+
+    def square(self):
+        prev = [x for x in self.state]
+        self.state = [prev[2], *prev[:2]]
+        return super().square()
+
+    def circle(self):
+        prev = [x for x in self.state]
+        self.state[0] = prev[1]
+        self.state[1] = 0
+        self.state[2] = prev[2] + prev[0]
+        return super().circle()

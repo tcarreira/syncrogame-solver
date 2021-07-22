@@ -7,6 +7,8 @@ def main():
     game.solve()
     game = Syncro.Level_1()
     game.solve()
+    game = Syncro.Level_2()
+    game.solve()
 
 
 if __name__ == '__main__':
