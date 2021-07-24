@@ -21,6 +21,7 @@ def main():
     Syncro.Level_15().solve()
     Syncro.Level_16().solve()
     Syncro.Level_17().solve()
+    Syncro.Level_18().solve()
 
 
 if __name__ == '__main__':
