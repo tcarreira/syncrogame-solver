@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Set
 
 
 class SyncroGame:
@@ -47,9 +47,9 @@ class SyncroGame:
         return max(state) == len(state)
 
     def solve(self):
-        print(self._solve(self.state, []))
+        print(self._solve(self.state, [], set()))
 
-    def _solve(self, state: List, history: List):
+    def _solve(self, state: List, history: List, seen: Set):
         if self.debug:
             print(f"debug: {state}, {history}")
 
@@ -58,13 +58,16 @@ class SyncroGame:
             return self
         if len(history) >= self.max_iter:
             return None
-        if str(state) in self._seen:
+        if str(state) in seen:
             return None
 
-        self._seen.add(str(state))
         for move in ["square", "circle", "triangle"]:
             try:
-                result = self._solve(self.rules[move](state), [*history, move])
+                result = self._solve(
+                    self.rules[move](state),
+                    [*history, move],
+                    set([*seen, str(state)])
+                )
             except KeyError:
                 pass
             if result:
