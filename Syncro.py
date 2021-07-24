@@ -301,7 +301,7 @@ class Level_19(SyncroGame):
 
 
 class Level_20(SyncroGame):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, alt_solution=False, *args, **kwargs):
         rules = {
             "square": lambda s: [s[0] + s[3], s[1], s[2], 0, s[4]],
             "circle": lambda s: [0, s[1], s[0] + s[3], s[2], s[4]],
@@ -310,3 +310,6 @@ class Level_20(SyncroGame):
         super().__init__(
             level=20, max_iter=16, cardinality=5, rules=rules, *args, **kwargs
         )
+        if alt_solution:
+            self.max_iter = 15
+            self.level = "20 (15 moves solution)"
