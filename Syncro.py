@@ -202,3 +202,14 @@ class Level_11(SyncroGame):
         super().__init__(
             level=11, max_iter=9, cardinality=4, rules=rules, *args, **kwargs
         )
+
+
+class Level_12(SyncroGame):
+    def __init__(self, *args, **kwargs):
+        rules = {
+            "square": lambda s: [0, s[0] + s[1], s[2], s[3]],
+            "circle": lambda s: [s[2], s[0], s[3], s[1]],
+        }
+        super().__init__(
+            level=12, max_iter=9, cardinality=4, rules=rules, *args, **kwargs
+        )
