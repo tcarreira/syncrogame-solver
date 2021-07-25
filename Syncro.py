@@ -35,7 +35,7 @@ class SyncroGame:
         return f"(L{self.level}) state={self.state}, history={self.get_history()}"
 
     def __str__(self) -> str:
-        return f"Level {self.level}: {self.get_history()}"
+        return f"Level {str(self.level):>3s}: {' '.join(self.get_history())}"
 
     def check(self, state=None) -> bool:
         if state is None:
@@ -47,7 +47,7 @@ class SyncroGame:
         return max(state) == len(state)
 
     def solve(self):
-        print(self._solve(self.state, [], set()))
+        return self._solve(self.state, [], set())
 
     def _solve(self, state: List, history: List, seen: Set):
         if self.debug:
@@ -312,4 +312,4 @@ class Level_20(SyncroGame):
         )
         if alt_solution:
             self.max_iter = 15
-            self.level = "20 (15 moves solution)"
+            self.level = "20\n(15moves)"
